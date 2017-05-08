@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'SYWaveformPlayer_Example' do
+  pod 'SYWaveformPlayer', :path => '../'
+
+  target 'SYWaveformPlayer_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
