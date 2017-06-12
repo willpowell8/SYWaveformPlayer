@@ -29,7 +29,10 @@
         [self addSubview:waveformView];
         
         playPauseButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        NSBundle *podBundle = [NSBundle bundleForClass:[self class]];
+        NSURL *url = [podBundle URLForResource:@"SYWaveformPlayer" withExtension:@"bundle"];
+        NSBundle *bundle = [[NSBundle alloc] initWithURL:url];
+        
         UIImage *img = [UIImage imageNamed:@"playbutton.png" inBundle:bundle compatibleWithTraitCollection:nil];
         [playPauseButton setImage:img forState:UIControlStateNormal];
         [playPauseButton addTarget:self
@@ -56,10 +59,20 @@
 
 - (void)playPauseTapped{
     if(player.playing){
-        [playPauseButton setImage:[UIImage imageNamed:@"playbutton.png"] forState:UIControlStateNormal];
+        NSBundle *podBundle = [NSBundle bundleForClass:[self class]];
+        NSURL *url = [podBundle URLForResource:@"SYWaveformPlayer" withExtension:@"bundle"];
+        NSBundle *bundle = [[NSBundle alloc] initWithURL:url];
+        
+        UIImage *img = [UIImage imageNamed:@"playbutton.png" inBundle:bundle compatibleWithTraitCollection:nil];
+        [playPauseButton setImage:img forState:UIControlStateNormal];
         [player pause];
     } else {
-        [playPauseButton setImage:[UIImage imageNamed:@"pausebutton.png"] forState:UIControlStateNormal];
+        NSBundle *podBundle = [NSBundle bundleForClass:[self class]];
+        NSURL *url = [podBundle URLForResource:@"SYWaveformPlayer" withExtension:@"bundle"];
+        NSBundle *bundle = [[NSBundle alloc] initWithURL:url];
+        
+        UIImage *img = [UIImage imageNamed:@"pausebutton.png" inBundle:bundle compatibleWithTraitCollection:nil];
+        [playPauseButton setImage:img forState:UIControlStateNormal];
         [player play];
     }
 }
