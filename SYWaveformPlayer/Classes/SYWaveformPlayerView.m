@@ -29,7 +29,9 @@
         [self addSubview:waveformView];
         
         playPauseButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [playPauseButton setImage:[UIImage imageNamed:@"playbutton.png"] forState:UIControlStateNormal];
+        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        UIImage *img = [UIImage imageNamed:@"playbutton.png" inBundle:bundle compatibleWithTraitCollection:nil];
+        [playPauseButton setImage:img forState:UIControlStateNormal];
         [playPauseButton addTarget:self
                    action:@selector(playPauseTapped)
          forControlEvents:UIControlEventTouchUpInside];
